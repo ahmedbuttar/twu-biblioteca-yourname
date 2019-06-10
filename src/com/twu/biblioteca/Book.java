@@ -30,4 +30,8 @@ public class Book {
     public void setPublished(int published) {
         this.published = published;
     }
+    public boolean equals(Book book){
+        return name.equals(book.name) && author.equals(book.author) && published==book.published;
+    }
+
 }
