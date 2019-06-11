@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Books {
 
@@ -14,5 +15,68 @@ public class Books {
         books.add(book1);
         books.add(book2);
     }
+
+    //if book is present in the books array function removes it and adds it to the checked-out-book array
+    public void checkoutBook(){
+        Book userBook = prepareBook();
+        Book checkoutBook = getBook(userBook);
+        if(checkoutBook!=null){
+            books.remove(checkoutBook);
+            Books.checkedoutBooks.add(checkoutBook);
+            System.out.println("Thank you! Enjoy the book");
+        }else{
+            System.out.println("Sorry, that book is not available");
+        }
+    }
+    //if book is present in the checked-out-books array function removes it and adds it to the books array
+    public void returnBook() {
+        Book userBook = prepareBook();
+        Book returnBook = getCheckedOutBook(userBook);
+        if (returnBook!=null) {
+            books.add(returnBook);
+            checkedoutBooks.remove(returnBook);
+            System.out.println("Thank you for returning the book");
+        } else {
+            System.out.println("This is not a valid book to return");
+        }
+    }
+    //prints the available books
+    public void showBooks() {
+        ArrayList<Book> array = Books.books;
+        for (int i = 0; i < array.size(); i++) {
+            System.out.println(array.get(i).getName() + ", " + array.get(i).getAuthor() + ", " + array.get(i).getPublished());
+        }
+
+    }
+    //takes in a user book object and returns an object with same attributes from books array
+    private Book getBook(Book book){
+        for(int i=0;i<books.size();i++){
+            if(books.get(i).equals(book)){
+                return Books.books.get(i);
+            }
+        }
+        return null;
+    }
+    //takes in a book object and returns an object with same attributes from checked-out-books array
+    private Book getCheckedOutBook(Book book){
+        for(int i=0;i<Books.checkedoutBooks.size();i++){
+            if(Books.checkedoutBooks.get(i).equals(book)){
+                return Books.checkedoutBooks.get(i);
+            }
+        }
+        return null;
+    }
+    //takes in user input and creates a book object to checkout or return
+    private Book prepareBook(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter book name");
+        String name = scanner.nextLine();
+        System.out.println("Enter author name");
+        String publisher = scanner.nextLine();
+        System.out.println("Enter year published");
+        int yearPublished = scanner.nextInt();
+        return new Book(name,publisher,yearPublished);
+    }
+
 
 }
