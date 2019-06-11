@@ -10,7 +10,7 @@ public class Movies {
     static {
         Movie movie = new Movie("Interstellar",2014,"Christopher Nolan","8.6");
         Movie movie1 = new Movie("Inception",2010,"Christopher Nolan","8.8");
-        Movie movie2 = new Movie("",2014,"Christopher Nolan","8.6");
+        Movie movie2 = new Movie("The imitation game",2014,"Morten Tyldum","8");
         movies.add(movie);
         movies.add(movie1);
         movies.add(movie2);
@@ -51,7 +51,7 @@ public class Movies {
         }
         return null;
     }
-    private void checkoutMovie(){
+    public void checkoutMovie(){
         Movie userMovie = prepareMovie();
         Movie checkoutMovie = getMovie(userMovie);
         if(checkoutMovie!=null){
@@ -62,7 +62,7 @@ public class Movies {
             System.out.println("Sorry, that movie is not available");
         }
     }
-    private void returnMovie(){
+    public void returnMovie(){
         Movie userMovie = prepareMovie();
         Movie returnMovie = getCheckedOutBook(userMovie);
         if (returnMovie!=null) {
