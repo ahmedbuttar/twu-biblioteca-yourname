@@ -51,26 +51,30 @@ public class Movies {
         }
         return null;
     }
-    public void checkoutMovie(){
+    public Movie checkoutMovie(){
         Movie userMovie = prepareMovie();
         Movie checkoutMovie = getMovie(userMovie);
         if(checkoutMovie!=null){
             movies.remove(checkoutMovie);
             checkedoutMovies.add(checkoutMovie);
             System.out.println("Thank you! Enjoy the Movie");
+            return checkoutMovie;
         }else{
             System.out.println("Sorry, that movie is not available");
+            return null;
         }
     }
-    public void returnMovie(){
+    public Movie returnMovie(){
         Movie userMovie = prepareMovie();
         Movie returnMovie = getCheckedOutBook(userMovie);
         if (returnMovie!=null) {
             movies.add(returnMovie);
             checkedoutMovies.remove(returnMovie);
             System.out.println("Thank you for returning the movie");
+            return returnMovie;
         } else {
             System.out.println("This is not a valid movie to return");
+            return null;
         }
     }
 }

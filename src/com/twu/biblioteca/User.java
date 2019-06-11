@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class User {
     private String name;
@@ -56,6 +57,18 @@ public class User {
     }
     public void addcheckedOutBook(Book book){
         this.checkedoutBooks.add(book);
+    }
+    public void removeCheckedOutBook(Book book){
+        this.checkedoutBooks.remove(book);
+    }
+    public void addcheckedOutMovie(Movie movie){
+        this.checkedoutMovies.add(movie);
+    }
+    public void removeCheckedOutMovie(Movie movie){
+        this.checkedoutMovies.remove(movie);
+    }
+    public int getCheckedoutBooks(){
+        return checkedoutBooks.size();
     }
     public String getPassword() {
         return password;

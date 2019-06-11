@@ -17,27 +17,31 @@ public class Books {
     }
 
     //if book is present in the books array function removes it and adds it to the checked-out-book array
-    public void checkoutBook(){
+    public Book checkoutBook(){
         Book userBook = prepareBook();
         Book checkoutBook = getBook(userBook);
         if(checkoutBook!=null){
             books.remove(checkoutBook);
             Books.checkedoutBooks.add(checkoutBook);
             System.out.println("Thank you! Enjoy the book");
+            return checkoutBook;
         }else{
             System.out.println("Sorry, that book is not available");
+            return null;
         }
     }
     //if book is present in the checked-out-books array function removes it and adds it to the books array
-    public void returnBook() {
+    public Book returnBook() {
         Book userBook = prepareBook();
         Book returnBook = getCheckedOutBook(userBook);
         if (returnBook!=null) {
             books.add(returnBook);
             checkedoutBooks.remove(returnBook);
             System.out.println("Thank you for returning the book");
+            return returnBook;
         } else {
             System.out.println("This is not a valid book to return");
+            return null;
         }
     }
     //prints the available books

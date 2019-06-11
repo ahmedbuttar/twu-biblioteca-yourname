@@ -26,7 +26,6 @@ public class Library {
         String libraryNumber=scanner.nextLine();
         System.out.println("Please enter you password");
         String password = scanner.nextLine();
-        //System.out.println(libraryNumber +" "+password);
         boolean isLoginSuccessful = users.login(libraryNumber,password);
         if(isLoginSuccessful){
             showMenu();
@@ -53,10 +52,10 @@ public class Library {
                 movies.showMovies();
                 break;
             case 3:
-                books.checkoutBook();
+                checkoutBook();
                 break;
             case 4:
-                books.returnBook();
+                returnBook();
                 break;
             case 5:
                 movies.checkoutMovie();
@@ -75,7 +74,30 @@ public class Library {
                 break;
         }
     }
-
+    public void checkoutBook(){
+        Book book = books.checkoutBook();
+        if(book!=null){
+            users.loggedInUser.addcheckedOutBook(book);
+        }
+    }
+    public void returnBook(){
+        Book book = books.returnBook();
+        if(book!=null){
+            users.loggedInUser.removeCheckedOutBook(book);
+        }
+    }
+    public void checkoutMovie(){
+        Movie movie = movies.checkoutMovie();
+        if(movie!=null){
+            users.loggedInUser.addCheckedOutMovie(movie);
+        }
+    }
+    public void returnMovie(){
+        Movie movie = movies.returnMovie();
+        if(movie!=null){
+            users.loggedInUser.removeCheckedOutMovie(movie);
+        }
+    }
 
 
 
