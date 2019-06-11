@@ -12,31 +12,28 @@ public class Library {
 
     public void showMenu() {
         System.out.println("1. Show list of all books\n2. check-out book\n3. return book\n4. quit\n\nEnter number to select menu option");
+        Scanner scanner = new Scanner(System.in);
+        selectedMenu(scanner.nextInt());
+        showMenu();
+
     }
 
-    public void selectedMenu(Scanner in) {
-        switch (in.nextInt()) {
+    private void selectedMenu(int n) {
+        switch (n) {
             case 1:
                 showBooks();
-                showMenu();
-                selectedMenu(in);
                 break;
             case 2:
                 checkoutBook(prepareBook());
-                showMenu();
-                selectedMenu(in);
                 break;
             case 3:
                 returnBook(prepareBook());
-                showMenu();
-                selectedMenu(in);
                 break;
             case 4:
+                System.exit(0);
                 break;
             default:
                 System.out.println("Invalid option selected");
-                showMenu();
-                selectedMenu(in);
                 break;
         }
     }

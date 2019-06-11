@@ -9,8 +9,7 @@ public class BibliotecaApp {
         Library library = new Library();
         library.showMessage();
         library.showMenu();
-        Scanner in = new Scanner(System.in);
-        library.selectedMenu(in);
+
     }
 
 }
