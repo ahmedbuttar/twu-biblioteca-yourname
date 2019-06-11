@@ -58,10 +58,10 @@ public class Library {
                 returnBook();
                 break;
             case 5:
-                movies.checkoutMovie();
+                checkoutMovie();
                 break;
             case 6:
-                movies.returnMovie();
+                returnMovie();
                 break;
             case 7:
                 users.showCurrentUser();

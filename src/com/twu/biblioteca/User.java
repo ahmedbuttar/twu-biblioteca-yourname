@@ -61,14 +61,14 @@ public class User {
     public void removeCheckedOutBook(Book book){
         this.checkedoutBooks.remove(book);
     }
-    public void addcheckedOutMovie(Movie movie){
-        this.checkedoutMovies.add(movie);
-    }
     public void removeCheckedOutMovie(Movie movie){
         this.checkedoutMovies.remove(movie);
     }
     public int getCheckedoutBooks(){
         return checkedoutBooks.size();
+    }
+    public int getCheckedOutMovies(){
+        return checkedoutMovies.size();
     }
     public String getPassword() {
         return password;
