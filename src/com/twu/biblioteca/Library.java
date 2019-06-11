@@ -7,23 +7,41 @@ public class Library {
 
     Books books;
     Movies movies;
-
-
+    Users users;
     Library(){
         books = new Books();
         movies = new Movies();
+        users = new Users();
     }
 
     public void showMessage() {
-        System.out.println("Welcome to Biblioteca, Your one-stop-shop for great book titles in Bangalore! \n");
+        System.out.println("Welcome to Biblioteca, Your one-stop-shop for great book titles in Bangalore!\n");
+        login();
+
     }
 
+    public void login(){
+        System.out.println("Please enter you library number to login");
+        Scanner scanner = new Scanner(System.in);
+        String libraryNumber=scanner.nextLine();
+        System.out.println("Please enter you password");
+        String password = scanner.nextLine();
+        //System.out.println(libraryNumber +" "+password);
+        boolean isLoginSuccessful = users.login(libraryNumber,password);
+        if(isLoginSuccessful){
+            showMenu();
+        }else{
+            login();
+        }
+    }
+
+
+
     public void showMenu() {
-        System.out.println("1. Show list of all books\n2. Show list of all Movies\n3. check-out book\n4. return book\n5. check-out movie\n6. return movie\n7. quit\n\nEnter number to select menu option");
+        System.out.println("1. Show list of all books\n2. Show list of all Movies\n3. check-out book\n4. return book\n5. check-out movie\n6. return movie\n7. show user info\n8. quit\n\nEnter number to select menu option");
         Scanner scanner = new Scanner(System.in);
         selectedMenu(scanner.nextInt());
         showMenu();
-
     }
 
     private void selectedMenu(int n) {
@@ -47,6 +65,9 @@ public class Library {
                 movies.returnMovie();
                 break;
             case 7:
+                users.showCurrentUser();
+                break;
+            case 8:
                 System.exit(0);
                 break;
             default:
