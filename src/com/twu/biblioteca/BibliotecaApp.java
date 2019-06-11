@@ -6,10 +6,11 @@ public class BibliotecaApp {
 
 
     public static void main(String[] args) {
-        Library.showMessage();
-        Library.showMenu();
+        Library library = new Library();
+        library.showMessage();
+        library.showMenu();
         Scanner in = new Scanner(System.in);
-        Library.selectedMenu(in);
+        library.selectedMenu(in);
     }
 
 }
