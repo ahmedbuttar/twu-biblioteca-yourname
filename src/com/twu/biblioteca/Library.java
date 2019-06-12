@@ -74,25 +74,25 @@ public class Library {
                 break;
         }
     }
-    public void checkoutBook(){
+    private void checkoutBook(){
         Book book = books.checkoutBook();
         if(book!=null){
             users.loggedInUser.addcheckedOutBook(book);
         }
     }
-    public void returnBook(){
+    private void returnBook(){
         Book book = books.returnBook();
         if(book!=null){
             users.loggedInUser.removeCheckedOutBook(book);
         }
     }
-    public void checkoutMovie(){
+    private void checkoutMovie(){
         Movie movie = movies.checkoutMovie();
         if(movie!=null){
             users.loggedInUser.addCheckedOutMovie(movie);
         }
     }
-    public void returnMovie(){
+    private void returnMovie(){
         Movie movie = movies.returnMovie();
         if(movie!=null){
             users.loggedInUser.removeCheckedOutMovie(movie);
