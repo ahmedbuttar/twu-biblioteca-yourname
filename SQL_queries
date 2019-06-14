@@ -1,0 +1,35 @@
+
+1. Anand Beck 
+SELECT member.name FROM member, book, checkout_item WHERE book.id = checkout_item.book_id AND member.id = checkout_item.member_id AND book.title='The Hobbit';
+
+2. 37
+SELECT Count(*) as TotalCount FROM (SELECT member.id FROM member EXCEPT SELECT member_id FROM checkout_item);
+
+3. 
+1984
+Catcher in the Rye
+Crouching Tiger, Hidden Dragon
+Domain Driven Design
+Fellowship of the Ring
+Lawrence of Arabia
+Office Space
+Thin Red Line
+To Kill a Mockingbird
+Tom Sawyer
+
+SELECT book.title FROM book WHERE book.id IN (SELECT book.id FROM book EXCEPT SELECT book_id FROM checkout_item) UNION SELECT movie.title FROM movie WHERE movie.id IN (SELECT movie.id FROM movie EXCEPT SELECT movie_id FROM checkout_item);
+
+4. 
+Ahmed Buttar 
+
+INSERT INTO book (id,title) VALUES (11,'The Pragmatic Programmer');
+INSERT INTO member (id,name) VALUES (43,'Ahmed Buttar');
+INSERT INTO checkout_item (member_id,book_id) VALUES (43,11);
+SELECT member.name FROM member, book, checkout_item WHERE book.id = checkout_item.book_id AND member.id = checkout_item.member_id AND book.title='The Pragmatic Programmer';
+
+5. 
+Anand Beck
+Frank Smith
+
+SELECT member.name FROM member, checkout_item WHERE member.id=checkout_item.member_id GROUP BY member_id HAVING Count(*)>1;
+
